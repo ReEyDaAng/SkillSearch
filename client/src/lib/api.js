@@ -10,7 +10,7 @@ export async function searchProfiles(skills) {
   const res = await fetch(`${BASE_URL}/search`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ skills })
+    body: JSON.stringify({ skills }),
   });
   if (!res.ok) throw new Error("Search failed");
   return res.json();

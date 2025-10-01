@@ -8,10 +8,12 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-app.use(cors({
-  origin: "*",
-  methods: ["GET","POST"],
-}));
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST"],
+  })
+);
 app.use(express.json());
 
 const DATA_PATH = path.join(__dirname, "..", "data", "profiles.json");
@@ -38,22 +40,22 @@ app.post("/search", (req, res) => {
     const body = req.body || {};
     let skills = Array.isArray(body.skills) ? body.skills : [];
     // normalize
-    skills = skills
-      .map(s => String(s).trim().toLowerCase())
-      .filter(Boolean);
+    skills = skills.map((s) => String(s).trim().toLowerCase()).filter(Boolean);
     skills = Array.from(new Set(skills)); // unique
     const maxScore = 5;
 
     const profiles = readProfiles();
 
     const results = profiles
-      .map(p => {
-        const pSkills = (p.skills || []).map(s => String(s).trim().toLowerCase());
-        const matches = skills.filter(s => pSkills.includes(s));
+      .map((p) => {
+        const pSkills = (p.skills || []).map((s) =>
+          String(s).trim().toLowerCase()
+        );
+        const matches = skills.filter((s) => pSkills.includes(s));
         const score = Math.min(maxScore, matches.length);
         return { ...p, score };
       })
-      .filter(p => p.score >= 1)
+      .filter((p) => p.score >= 1)
       .sort((a, b) => {
         if (b.score !== a.score) return b.score - a.score;
         return (b.rating || 0) - (a.rating || 0);

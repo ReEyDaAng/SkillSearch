@@ -23,7 +23,7 @@ export default function Search() {
     setError("");
     setResults([]);
     try {
-      const payload = chips.length ? chips : (input ? [input] : []);
+      const payload = chips.length ? chips : input ? [input] : [];
       const data = await searchProfiles(payload);
       setResults(data.results || []);
     } catch (e) {
@@ -33,7 +33,7 @@ export default function Search() {
     }
   };
 
-  const removeChip = (c) => setChips(chips.filter(x => x !== c));
+  const removeChip = (c) => setChips(chips.filter((x) => x !== c));
 
   return (
     <div>
@@ -47,16 +47,30 @@ export default function Search() {
           placeholder="Skills"
           className="w-64 rounded-lg border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
         />
-        <button onClick={() => addChip(input)} className="rounded-lg border px-3 py-2 hover:bg-slate-50">Add</button>
-        <button onClick={onSearch} className="relative rounded-lg bg-indigo-600 px-4 py-2 font-medium text-white hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+        <button
+          onClick={() => addChip(input)}
+          className="rounded-lg border px-3 py-2 hover:bg-slate-50"
+        >
+          Add
+        </button>
+        <button
+          onClick={onSearch}
+          className="relative rounded-lg bg-indigo-600 px-4 py-2 font-medium text-white hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        >
           <span className="absolute inset-0 rounded-lg opacity-0 transition-opacity hover:opacity-100 ring-2 ring-indigo-300 ring-offset-0"></span>
           Search
         </button>
       </div>
 
       <div className="mt-2 flex flex-wrap gap-2">
-        {chips.map(c => (
-          <button key={c} onClick={() => removeChip(c)} className="chip hover:bg-indigo-200">{c} ×</button>
+        {chips.map((c) => (
+          <button
+            key={c}
+            onClick={() => removeChip(c)}
+            className="chip hover:bg-indigo-200"
+          >
+            {c} ×
+          </button>
         ))}
       </div>
 
@@ -64,7 +78,9 @@ export default function Search() {
         <>
           <Loader label="Searching profiles…" />
           <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {Array.from({ length: 6 }).map((_, i) => <ProfileCardSkeleton key={i} />)}
+            {Array.from({ length: 6 }).map((_, i) => (
+              <ProfileCardSkeleton key={i} />
+            ))}
           </div>
         </>
       )}
@@ -72,7 +88,9 @@ export default function Search() {
       {!loading && error && <div className="mt-6 text-red-600">{error}</div>}
 
       {!loading && !error && results.length === 0 && (
-        <div className="mt-6 text-slate-500">No results yet. Add a skill and press Search.</div>
+        <div className="mt-6 text-slate-500">
+          No results yet. Add a skill and press Search.
+        </div>
       )}
 
       {!loading && !error && results.length > 0 && (

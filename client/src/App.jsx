@@ -4,7 +4,9 @@ const NavItem = ({ to, children }) => (
   <NavLink
     to={to}
     className={({ isActive }) =>
-      `px-3 py-2 rounded-lg ${isActive ? "bg-indigo-100 text-indigo-700" : "hover:bg-slate-100"}`
+      `px-3 py-2 rounded-lg ${
+        isActive ? "bg-indigo-100 text-indigo-700" : "hover:bg-slate-100"
+      }`
     }
   >
     {children}
