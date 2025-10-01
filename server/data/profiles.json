@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "name": "Jane Doe",
+    "age": 30,
+    "city": "Kyiv",
+    "skills": [
+      "React",
+      "Node.js"
+    ],
+    "about": "Full‑stack developer with a passion for web technologies.",
+    "rating": 4.5
+  },
+  {
+    "id": 2,
+    "name": "John Smith",
+    "age": 25,
+    "city": "Lviv",
+    "skills": [
+      "TypeScript",
+      "Python"
+    ],
+    "about": "Frontend developer experienced in scalable applications.",
+    "rating": 4.7
+  },
+  {
+    "id": 3,
+    "name": "Anna Kharlova",
+    "age": 28,
+    "city": "Kyiv",
+    "skills": [
+      "JavaScript",
+      "React",
+      "Node.js",
+      "TypeScript"
+    ],
+    "about": "Full‑stack developer with 3+ years of experience.",
+    "rating": 4.9
+  },
+  {
+    "id": 4,
+    "name": "Alice Johnson",
+    "age": 35,
+    "city": "Odessa",
+    "skills": [
+      "GraphQL",
+      "React"
+    ],
+    "about": "Full‑stack developer with 3+ years of experience.",
+    "rating": 4.9
+  }
+]
