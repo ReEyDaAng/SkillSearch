@@ -1,0 +1,5 @@
+# node / build artifacts
+node_modules
+dist
+.client
+.vercel
